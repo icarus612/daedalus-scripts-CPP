@@ -3,11 +3,12 @@
 
 using namespace std;
 
-vector<int> merge(vector<int> left, vector<int> right) {
+vector<int> merge(vector<int> &left, vector<int> &right) {
 	vector<int> result;
 	while (left.size() > 0 && right.size() > 0) {
-		int l_end = left[left.size()];
-		int r_end = right[right.size()];
+		int l_end = left[left.size()-1];
+		int r_end = right[right.size()-1];
+		cout << "left: " << l_end << " | right: " << r_end << endl;
 		if (l_end > r_end) {
 			result.push_back(r_end);
 			right.pop_back();
