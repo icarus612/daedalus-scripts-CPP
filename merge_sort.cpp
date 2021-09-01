@@ -8,7 +8,6 @@ vector<int> merge(vector<int> left, vector<int> right) {
 	while (left.size() > 0 && right.size() > 0) {
 		int l_end = left[left.size()];
 		int r_end = right[right.size()];
-		cout << l_end << " | " << r_end << endl;
 		if (l_end > r_end) {
 			result.push_back(r_end);
 			right.pop_back();
@@ -24,18 +23,17 @@ vector<int> merge(vector<int> left, vector<int> right) {
 	return result;
 }
 
-vector<int> merge_sort(vector<int> arr) {
+vector<int> merge_sort(vector<int> &arr) {
 	if (arr.size() == 1) return arr;
 
 	int midpoint = (int) arr.size() / 2;
-	vector<int> left_arr, right_arr;
-	vector::const_iterator itr_first = arr.begin();
-	vector::const_iterator itr_middle = arr.begin() + midpoint;
-	vector::const_iterator itr_last = arr.end();
-	vector<int> new_left = newVec(itr_first, itr_middle);
-	vector<int> new_right = newVec(itr_middle, itr_last); 
-	vector<int> new_left(arr.begin(), arr.begin() + midpoint);
-	vector<int> new_right(arr.begin() + midpoint, arr.begin()); 
+	vector<int> left_arr, right_arr, new_left, new_right;
+	vector<int>::const_iterator itr_first = arr.begin();
+	vector<int>::const_iterator itr_middle = arr.begin() + midpoint;
+	vector<int>::const_iterator itr_last = arr.end();
+	new_left.assign(itr_first, itr_middle);
+	new_right.assign(itr_middle, itr_last); 
+
 	left_arr = merge_sort(new_left);
 	right_arr = merge_sort(new_right);
 	return merge(left_arr, right_arr);
