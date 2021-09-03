@@ -52,6 +52,6 @@ int main() {
 	test_arr = {4, 3355, 45, 678, 5, 6, 66, 33, 7, 8, 5, 561, 4646 };
 	print_arr(test_arr);
 	final_arr = merge_sort(test_arr);
-	print_arr(test_arr);
+	print_arr(final_arr);
 	return 0;
 }
